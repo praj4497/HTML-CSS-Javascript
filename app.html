@@ -1,0 +1,204 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <link href="D:\HTML\bootstrap\css\bootstrap.css" rel="stylesheet"/>
+        <link href="D:\HTML\bootstrap\css\bootstrap-responsive.css" rel="stylesheet"/>
+        <link href="./jsonex.css" rel="stylesheet">
+        <script src="help1.js"></script>
+        <script src="edit.js"></script>
+        <link href ="bootstrap-responsive.css"rel="stylesheet"/>
+        <link href ="bootstrap.min.css"rel="stylesheet"/>
+        <link href ="bootstrap-responsive.min.css"rel="stylesheet"/>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+         <script>
+          function fun(a){
+              pagepointer=a;
+    $('tbody').children().remove();
+$.ajax({
+            url: "https://reqres.in/api/users?page="+a,
+            data: {},
+            beforeSend: function(){}
+        }).done(function(response) {
+            var trArr = new Array();
+            $.each(response.data, function(i, v){
+                trArr.push('<tr><td>' + v.first_name  + '</td><td>' + v.email + '</td><td><img id="img" src="' 
+                + v.avatar + '" width="100px" /></td><td> <a class="edit" title="Edit" id="ed" data-toggle="tooltip"><i class="material-icons">&#xE254;</i> <a class="delete" id="de" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a></a>' + '</td></tr>'  );
+                
+            });
+            $('table#alk-table tbody').append(trArr.join('\n'));
+        });
+    }
+        </script>
+        <style>
+              #sw{
+          margin-top:2%;
+          margin-bottom: 2%;
+          width:18%;
+          border-radius:5%;
+      }
+      .table-wrapper{
+          width: 90%;
+         align-content: center;
+         padding: 30px;
+      }
+      .table-title{
+          align-content: center;
+        
+      }
+      #form{
+            background-color:whitesmoke;               
+                padding:2%; 
+              
+                font-size:20px;
+                border: 3px solid rgb(129, 159, 170);
+                width:320px;
+                
+                margin-top:3%;
+                margin-left:560px;
+                margin-bottom:5%;
+                height:360px;
+                display:none;
+ 
+            
+
+
+            }
+            .container{
+                width: 60%;
+                border: 2px solid rgb(129, 159, 170);
+                background-color:whitesmoke;
+                margin-top:50px;
+                padding:15px;
+          
+            }
+            .body{
+              background-color: lightblue;
+            }
+           #ab{
+                width:150px;
+            }
+            #ab2{
+                width:200px;
+            }
+            #ab3{
+                width:130px;
+            }
+            #ab4{
+                width:70px;
+            }
+       
+            
+            #ll{
+
+margin-top:5%;
+border: 3px solid black;
+width:50%;
+
+background-color: grey;
+}
+        #ff{
+                margin-top:0%;
+                text-shadow:1px 1px;
+            }
+            .t{
+
+border-radius:6px;
+height:30px;
+
+}
+
+#s{
+               margin-top: 12%;
+                margin-left:1%;
+                
+            }
+            th{
+                width: 200%;
+            }
+           
+
+
+        </style>
+  
+     
+         
+
+    
+    </head>
+
+    <body class="body">
+        <div class="container">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="rowspan">
+                        <div class="colspan"><h2><b>User List</b></h2></div>
+                        <div class="colspan">
+                          
+                            <button id='sw' onclick="" class="col-sm-4 pull-right btn btn-primary"><i class="fa fa-plus"></i> Add New</button>
+                        </div>
+                    </div>
+                </div>
+                <table id="alk-table" class="table table-bordered" style="border:2px solid" >
+                        <thead><tr><th id="ab">Name</th><th id="ab2">Email_address</th><th id="ab3">Avatar</th><th id="ab4">Actions</th></tr></thead>
+                        <tbody></tbody>
+                </table>
+                <div class="pull-right">
+                        <nav aria-label="Page navigation example"  >
+                                <ul class="pagination">
+                                  <li class="page-item" onclick=fun(pagepointer-1)><a class="page-link" href="#">Previous</a></li>
+                                  <li class="page-item" onclick=fun(1)><a class="page-link" href="#">1</a></li>
+                                  <li class="page-item" onclick=fun(2)><a class="page-link" href="#">2</a></li>
+                                  <li class="page-item" onclick=fun(3)><a class="page-link" href="#">3</a></li>
+                                  <li class="page-item" onclick=fun(4)><a class="page-link" href="#">4</a></li>
+                                  <li class="page-item" onclick=fun(pagepointer+1)><a class="page-link" href="#">Next</a></li>
+                                </ul>
+                              </nav>
+                            </div>  
+
+            </div> 
+             
+        </div>
+        <div id="form" > 
+            <script>
+                 $(document).ready(function(){
+                     fun(1);
+        $(".add-row").click(function(){
+            jQuery("#form").toggle();
+            var name = $("#name").val();
+            var lname = $("#lname").val();
+            var email = $("#email").val();
+            var markup = "<tr><td>" + name + "</td><td>" + email + "</td><td>Picture</td><td>empty</td></tr>";
+        $("table tbody").append(markup);
+     }) });
+                </script>
+                <p id="ff"><b>User Details</b> </p>
+             
+         <form action="":>
+            First name:
+             <p><input type="text" class="t" id="name" name="firstname" ></p>
+           
+            Last name:
+             <p><input type="text" class="t" id="lname"name="lastname" value=></p>
+            
+            Email ID:
+             <p><input type="text" class="t" id="email" name="email" value=></p>
+             
+             <p id="s"><input type="button"  class="btn btn-primary add-row" value="Submit" ></p>
+           </form> 
+         </div>
+
+
+    </body>
+</html>
